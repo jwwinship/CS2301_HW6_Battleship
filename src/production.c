@@ -468,6 +468,10 @@ bool production(int argc, char* argv[])
             }
             puts("> Hit <ENTER> to continue!\n");
             getchar();
+            if (player == PLAYER_ONE)
+            {
+                getchar(); //For some reason, getchar seems to get the input from the player entering coordinates as the input to continue, so we have to call it again to make sure we actually wait for another input.
+            }
             /* switches from player 1 to player 2 */
             player = !player;
 

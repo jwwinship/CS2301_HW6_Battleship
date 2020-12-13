@@ -1,0 +1,4 @@
+> Player 1's turn.
+3, 4 is a hit!
+> Player 2's turn.
+4, 0 is a miss!
