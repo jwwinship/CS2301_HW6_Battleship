@@ -24,35 +24,7 @@
  * Post-condition: Updates the cardinals array
  */
 void checkBoundsOfCardinal (Boolean cardinals[], int bound, int direction) {
-    switch (direction) {
-        case NORTH:
-            if (bound < 0)
-                cardinals[0] = FALSE;
-            else
-                cardinals[0] = TRUE;
-            break;
 
-        case SOUTH:
-            if (bound > 9)
-                cardinals[1] = FALSE;
-            else
-                cardinals[1] = TRUE;
-            break;
-
-        case WEST:
-            if (bound < 0)
-                cardinals[2] = FALSE;
-            else
-                cardinals[2] = TRUE;
-            break;
-
-        case EAST:
-            if (bound > 9)
-                cardinals[3] = FALSE;
-            else
-                cardinals[3] = TRUE;
-            break;
-    }
 }
 
 /**
@@ -67,63 +39,6 @@ void checkBoundsOfCardinal (Boolean cardinals[], int bound, int direction) {
  */
 Boolean checkSunkShip (short sunkShip[][NUM_OF_SHIPS], short player, char shipSymbol, FILE *stream) {
     Boolean sunked = FALSE;
-
-    switch (shipSymbol) {
-        case CARRIER:
-            if (--sunkShip[player][0] == 0) {
-                printf ("> Player %d's Carrier sunked!\n", player + 1);
-
-                /* Write to battleship.log */
-                fprintf (stream, "Player %d's Carrier sunked!\n", player + 1);
-
-                sunked = TRUE;
-            }
-            break;
-
-        case BATTLESHIP:
-            if (--sunkShip[player][1] == 0) {
-                printf ("> Player %d's Battleship sunked!\n", player + 1);
-
-                /* Write to battleship.log */
-                fprintf (stream, "Player %d's Battleship sunked!\n", player + 1);
-
-                sunked = TRUE;
-            }
-            break;
-
-        case CRUISER:
-            if (--sunkShip[player][2] == 0) {
-                printf ("> Player %d's Cruiser sunked!\n", player + 1);
-
-                /* Write to battleship.log */
-                fprintf (stream, "Player %d's Cruiser sunked!\n", player + 1);
-
-                sunked = TRUE;
-            }
-            break;
-
-        case SUBMARINE:
-            if (--sunkShip[player][3] == 0) {
-                printf ("> Player %d's Submarine sunked!\n", player + 1);
-
-                /* Write to battleship.log */
-                fprintf (stream, "Player %d's Submarine sunked!\n", player + 1);
-
-                sunked = TRUE;
-            }
-            break;
-
-        case DESTROYER:
-            if (--sunkShip[player][4] == 0) {
-                printf ("> Player %d's Destroyer sunked!\n", player + 1);
-
-                /* Write to battleship.log */
-                fprintf (stream, "Player %d's Destroyer sunked!\n", player + 1);
-
-                sunked = TRUE;
-            }
-            break;
-    }
 
     return sunked;
 }
@@ -140,24 +55,6 @@ Boolean checkSunkShip (short sunkShip[][NUM_OF_SHIPS], short player, char shipSy
 Coordinate getTarget (void) {
     Coordinate target;
 
-    fflush (stdin);
-    Boolean getTargetFlag = TRUE;
-
-    while (getTargetFlag == TRUE)
-    {
-        puts ("> Enter Target (ex. > 3 4):\n");
-        puts ("> ");
-        int numbersRead = scanf ("%d %d", &target.row, &target.column);
-        if (numbersRead == 2)
-        {
-            getTargetFlag = FALSE;
-        }
-        else
-        {
-            puts("Invalid Input! Please try again");
-        }
-    }
-
     return target;
 }
 
@@ -173,27 +70,7 @@ Coordinate getTarget (void) {
 short checkShot (Cell gameBoard[][COLS], Coordinate target) {
     int hit = -2;
 
-    switch (gameBoard[target.row][target.column].symbol) {
-        /* miss */
-        case WATER:
-            hit = 0;
-            break;
 
-            /* hit */
-        case CARRIER:
-        case BATTLESHIP:
-        case CRUISER:
-        case SUBMARINE:
-        case DESTROYER:
-            hit = 1;
-            break;
-
-        case HIT:
-        case MISS:
-        default:
-            hit = -1;
-            break;
-    }
 
     return hit;
 }
