@@ -9,10 +9,11 @@
 #include <stdlib.h>
 
 #include "battleship.h"
+#include "board.h"
 
 
 bool production(int argc, char* argv[]);
-void welcomeScreen();
+
 
 
 #endif //CS2301_HW6_BATTLESHIP_PRODUCTION_H

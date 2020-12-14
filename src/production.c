@@ -3,6 +3,8 @@
 //
 
 #include "production.h"
+#include "board.h"
+
 bool production(int argc, char* argv[])
 {
     /**

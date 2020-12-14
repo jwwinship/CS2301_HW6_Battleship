@@ -90,26 +90,12 @@ typedef struct cell {
     Coordinate position;
 } Cell;
 
-/* FUNCTION PROTOTYPES */
-
-void         welcomeScreen                  (void);
-void         initializeGameBoard            (Cell gameBoard[][COLS]);
-void         printGameBoard                 (Cell gameBoard [][COLS], Boolean showPegs);
-void         putShipOnGameBoard             (Cell gameBoard[][COLS], WaterCraft ship, Coordinate position, int direction);
-void         manuallyPlaceShipsOnGameBoard  (Cell gameBoard[][COLS], WaterCraft ship[]);
-void         randomlyPlaceShipsOnGameBoard  (Cell gameBoard[][COLS], WaterCraft ship[]);
-void         updateGameBoard                (Cell gameBoard[][COLS], Coordinate target);
 void         checkBoundsOfCardinal          (Boolean cardinals[], int bound, int direction);
-void         systemMessage                  (char *message);
 
 Boolean      checkSunkShip                  (short sunkShip[][NUM_OF_SHIPS], short player, char shipSymbol, FILE *stream);
-Boolean      isValidLocation                (Cell gameBoard[][COLS], Coordinate position, int direction, int length);
-Boolean      convertStringtoPosition        (Coordinate position[], char *stringPosition, int length);
-Boolean      isWinner                       (Stats players[], int player);
-Coordinate   generatePosition               (int direction, int length);
+
 Coordinate   getTarget                      (void);
 
 short        checkShot                      (Cell gameBoard[][COLS], Coordinate target);
-int          getRandomNumber                (int lowest, int highest);
 
 #endif
